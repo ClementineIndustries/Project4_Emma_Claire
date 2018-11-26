@@ -34,6 +34,10 @@ google.maps.event.addListener(myApp.autoCompInput, "place_changed", function () 
 // prevent the default on form submit and get value of input
 myApp.formSubmit = function () {
     $("form").on("submit", function (event) {
+        // scroll to results section
+        $('html, body').animate({
+            scrollTop: $("footer").offset().top
+        }, 2000);
         event.preventDefault();
         myApp.collectFormData();
     }
@@ -172,8 +176,8 @@ myApp.outputHistoricalData = function () {
 myApp.getAverageTempMax = function (calcArray) {
     //calculate the average temperature of the whole array rounded to two decimal points.
     myApp.avgMaxTemp = (calcArray.reduce((a, b) => a + b, 0) / calcArray.length).toFixed(2);
-    $('.outputData').css('display', 'block');
-    $('.results').append(`<h3 class="tempMax">Max Temperature ${myApp.avgMaxTemp} ${myApp.unitsPrinted}</h3>`);
+    $('.outputData').css('display', 'block').slideDown("slow");
+    $('.results').append(`<p class="tempMax">Maximum temperature per day: </p>`, `<p class="temp">${myApp.avgMaxTemp} ${myApp.unitsPrinted}</p>`);
     //call the firebase api to figure out what to add to the packing list
     // myApp.getClothing();
     myApp.getAverageTempMin(myApp.historyTempMin);
@@ -184,7 +188,7 @@ myApp.getAverageTempMin = function (calcArray) {
     //calculate the average temperature of the whole array rounded to two decimal points.
     myApp.avgMinTemp = (calcArray.reduce((a, b) => a + b, 0) / calcArray.length).toFixed(2);
 
-    $('.results').append(`<h3 class="tempMin">Min Temperature ${myApp.avgMinTemp} ${myApp.unitsPrinted}</h3>`);
+    $('.results').append(`<p class="tempMin">Minimum temperature per day:</p>`, `<p class="temp">${myApp.avgMinTemp}${myApp.unitsPrinted}</p>`);
     //call the firebase api to figure out what to add to the packing list
 
     myApp.getAverageTemp(myApp.historyTempAvg);
@@ -195,7 +199,7 @@ myApp.getAverageTemp = function (calcArray) {
     //calculate the average temperature of the whole array rounded to two decimal points.
     myApp.avgArray = (calcArray.reduce((a, b) => a + b, 0) / calcArray.length).toFixed(2);
 
-    $('.results').append(`<h3 class="avgTemp">Avg Temperature ${myApp.avgArray} ${myApp.unitsPrinted}</h3>`);
+    $('.results').append(`<p class="avgTemp">Average temperature per day:</p>`, `<p class="temp">${myApp.avgArray} ${myApp.unitsPrinted}</p>`);
     //call the firebase api to figure out what to add to the packing list
     myApp.weatherCalc();
 };

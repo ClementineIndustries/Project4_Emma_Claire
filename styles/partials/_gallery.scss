@@ -1,0 +1,10 @@
+// gallery styles
+
+.gallery {
+    @include flexBox();
+}
+
+.gallery img:nth-child(3),
+.gallery img:nth-child(2) {
+    display: none;
+}

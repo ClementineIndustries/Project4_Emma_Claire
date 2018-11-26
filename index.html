@@ -6,19 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:700|Lato" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <link rel="stylesheet" href="styles/style.css">
-    <title>Suitcase Scout</title>
+    <title>Weather Wardrobe</title>
 </head>
 
 <body>
 <!-- header starts here -->
 <header>
     <div class="wrapper">
-        <h1>Suitcase Scout</h1>
+        <h1>Weather Wardrobe</h1>
         <p>Plan when to go and what to pack for your next adventure. Enter your destination and trip duration, and find the right clothes for your vacation!</p>
+        <img src="assets/beach.jpg" alt="Aerial shot of two people walking on a tiny Caribbean island surrounded by teal water">
     </div>
 </header>
 <!-- header ends here -->
@@ -28,15 +30,11 @@
     <section class="inputData">
         <div class="wrapper">
             <form id="form" action="">
-                <div class="inputWrapper radio">
-                    <label for="ca">Celsius</label>
-                    <input id="ca" value="ca" type="radio" name="tempUnits" checked="checked">
-                    <label for="us">Farenheit</label>
-                    <input id="us" value="us" type="radio" name="tempUnits">
+                <p class="explanation">Tell us where and when you will need clothes:</p>
+                <div class="inputWrapper">
+                    <label class="visuallyhidden" for="autoComplete">Destination:</label>
+                    <input id="autoComplete" type="search" required>
                 </div>
-            
-                <label for="autoComplete" class="visuallyhidden">destination:</label>
-                <input id="autoComplete" type="search" required>
             
                 <div class="datesWrapper">
                     <div class="inputWrapper">
@@ -49,10 +47,23 @@
                         <input id="endDate" type="date" required>
                     </div>
                 </div>
+
+                <div class="inputWrapper radio">
+                    <label for="ca">Celsius</label>
+                    <input id="ca" value="ca" type="radio" name="tempUnits" checked="checked">
+                    <label for="us">Farenheit</label>
+                    <input id="us" value="us" type="radio" name="tempUnits">
+                </div>
             
                 <input id="submit" type="submit" value="Let's go!">
             </form>
         </div>
+    </section>
+
+    <section class="gallery">
+        <img src="assets/skating.jpg" alt="People skating on an ice rink in a big city">
+        <img src="assets/egypt.jpg" alt="People walking under massive pillars with heiroglyphs in Egypt">
+        <img src="assets/riceField.jpg" alt="A man standing in a rice field with palm trees">
     </section>
 
     <section class="outputData">
@@ -60,6 +71,7 @@
             <div class="results"></div>
 
             <!-- list to display packing list -->
+            <p>We suggest you bring:</p>
             <ul class="wardrobeList"></ul>
             <a id="reset" href="#">Explore new place</a>
         </div>
@@ -78,6 +90,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&v=3&key=AIzaSyAtUxpG10DW19jF5_OC6Q5rfT3PO5Nzmos&libraries=places"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.1.2/jquery.smooth-scroll.min.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 

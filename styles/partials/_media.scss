@@ -8,10 +8,56 @@
 
 @media only screen and (min-width: 500px) {
     .datesWrapper {
-        @include flexBox(row, space-between, center);
+        @include flexBox(row, space-evenly, center);
     }
 
-    label[for=endDate] {
+    .inputWrapper:last-of-type {
         margin-left: 10px;
+    }
+
+    form {
+        min-height: 300px;
+    }
+}
+
+@media only screen and (min-width: 625px) {
+    .gallery img:nth-child(2) {
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    header{
+        background: linear-gradient(to bottom, #0169770c, #0169778a), url("../assets/beach.jpg");
+        @include flexBox(row, flex-start, center);
+        @include bgCenter();
+        color: white;
+        height: calc(100vh - 40px);
+    }
+
+    header img {
+        display: none;
+    }
+
+    h1 {
+        color:white;
+        font-size: 4rem;
+        margin: 0;
+    }
+
+    header .wrapper {
+        margin: 0 0 0 5vw;
+        @include flexBox(column, flex-start, flex-start);
+        width: 30%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    form {
+        width: 60%;
+    }
+
+    .gallery img:nth-child(3) {
+        display: inline-block;
     }
 }
